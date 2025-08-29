@@ -26,7 +26,7 @@ public static class HourSyncCore
         }
 
         /// <summary>
-        /// The full HTML response from the home page.
+        /// The full HTML response from the IMMEDIATE home page (not the list of eHours).
         /// </summary>
         public string? LoginHtmlResponse
         {
@@ -195,7 +195,7 @@ public static class HourSyncCore
     /// </summary>
     /// <param name="phpSessionId">The PHP session ID returned by the server.</param>
     /// <returns>A string with the home page as HTML, unparsed.</returns>
-    public static async Task<string> GetHome(string phpSessionId)
+    public static async Task<string> GetRequestsPage(string phpSessionId)
     {
         if (string.IsNullOrWhiteSpace(phpSessionId))
         {

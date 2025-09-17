@@ -5,11 +5,41 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn> <!-- Optional: ignore missing doc warnings -->
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>hoursynccore</PackageId>
+    <Title>HourSyncCore</Title>
+    <Version>1.2.0</Version>
+    <Authors>Neil Patrao, npxrc</Authors>
+    <Company>HourSync</Company>
+    <Description>An easy way to interact with the Academy Endorsement portal.
+Not affiliated with or endorsed by the Olathe School District</Description>
+    <PackageProjectUrl>https://hoursync.net</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/npxrc/HourSyncCore</RepositoryUrl>
+    <PackageTags>ehours, C#, HTML</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance> <!-- Optional: ignore missing doc warnings -->
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.12.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

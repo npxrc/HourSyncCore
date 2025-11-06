@@ -1,6 +1,9 @@
 ﻿#pragma warning disable IDE0007 // Use implicit type
 
-//HourSyncCore.cs
+// HourSyncCore.cs
+//
+// Push command since I forget every time:
+// nuget push bin\publish\hoursynccore.<version>.nupkg -s https://api.nuget.org/v3/index.json
 
 using System.Net;
 using System.Text;
@@ -788,7 +791,70 @@ public static partial class HourSyncCore
         }
     }
 
-    //Utils
+    /// <summary>
+    /// Fetches and returns the leaderboard, parsed.
+    /// </summary>
+    /// <param name="phpSessionId">Your session ID</param>
+    /// <returns><see cref="LeaderboardData"/></returns>
+    public static async Task<LeaderboardData> GetLeaderboard(string phpSessionId)
+    {
+        try
+        {
+            var (client, _, __) = CreateHttpClient(phpSessionId);
+            Log("Client has been set up, getting");
+            var response = await client.GetAsync("https://academyendorsement.olatheschools.com/Student/leaderBoard.php");
+            var responseString = await response.Content.ReadAsStringAsync();
+            Log("Got");
+            Log(responseString);
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(responseString);
+
+            var titleNode = doc.DocumentNode.SelectSingleNode("//h1[contains(text(), 'EHour')]");
+
+            if (titleNode != null)
+            {
+                var rows = doc.DocumentNode.SelectNodes("//table//tr[td]");
+                var result = rows
+                            .Select(r => r.SelectNodes("td").ToList())
+                            .Where(cells => !string.IsNullOrWhiteSpace(cells[1].InnerText))
+                            .Select((cells, index) => new LeaderboardStudent
+                            {
+                                Rank = index + 1,
+                                Name = cells[1].InnerText.Trim(),
+                                Hours = double.TryParse(cells[2].InnerText.Trim(), out double hoursVal) ? hoursVal.ToString("0.##") : cells[2].InnerText.Trim()
+                            })
+                            .ToList();
+
+
+                return new LeaderboardData { StudentData = result, LoggedIn = true, Success = true };
+            }
+            else
+            {
+                return new LeaderboardData { StudentData = null, LoggedIn = false, Success = false };
+            }
+
+        }
+        catch (Exception ex)
+        {
+            return new LeaderboardData() { StudentData = null, LoggedIn = false, Success = false, Error = ex.Message };
+        }
+    }
+
+    /// <summary>
+    /// Check if your session ID is still active by testing it against the home page.
+    /// </summary>
+    /// <param name="phpSessionId">The session ID to test</param>
+    /// <returns>A bool of true if active, and false if inactive.</returns>
+    public static async Task<bool> IsSessionActive(string phpSessionId)
+    {
+        var (client, _, __) = CreateHttpClient(phpSessionId);
+        var response = client.GetAsync("https://academyendorsement.olatheschools.com/Student/studentHome.php");
+        var content = await response.Result.Content.ReadAsStringAsync();
+        return content.Contains("Welcome to your");
+    }
+
+    //utils
     [GeneratedRegex(@"^\d{3}[a-zA-Z]{3}(0[1-9]|[12][0-9]|3[01])$")]
     public static partial Regex UsernameRegex();
 
@@ -815,7 +881,6 @@ public static partial class HourSyncCore
 
         return (client, handler, cookieContainer);
     }
-
     public static void Log(string toLog)
     {
         string logFilePath = Path.Combine(
@@ -835,56 +900,6 @@ public static partial class HourSyncCore
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
-        }
-    }
-    /// <summary>
-    /// Fetches and returns the leaderboard, parsed.
-    /// </summary>
-    /// <param name="phpSessionId">Your session ID</param>
-    /// <returns><see cref="LeaderboardData"/></returns>
-    public static async Task<LeaderboardData> GetLeaderboard(string phpSessionId)
-    {
-        try
-        {
-            var (client, _, __) = CreateHttpClient(phpSessionId);
-            Log("Client has been set up, getting");
-            var response = await client.GetAsync("https://academyendorsement.olatheschools.com/Student/leaderBoard.php");
-            var responseString = await response.Content.ReadAsStringAsync();
-            Log("Got");
-            Log(responseString);
-
-            var doc = new HtmlDocument();
-            doc.LoadHtml(responseString);
-
-            var titleNode = doc.DocumentNode.SelectSingleNode("//h1[contains(text(), 'EHour')]");
-
-            if (titleNode != null)
-            {
-                // looks like the leaderboard is present
-                var rows = doc.DocumentNode.SelectNodes("//table//tr[td]");
-                var result = rows
-    .Select(r => r.SelectNodes("td").ToList())
-    .Where(cells => !string.IsNullOrWhiteSpace(cells[1].InnerText))
-    .Select((cells, index) => new LeaderboardStudent
-    {
-        Rank = index + 1,
-        Name = cells[1].InnerText.Trim(),
-        Hours = cells[2].InnerText.Trim()
-    })
-    .ToList();
-
-
-                return new LeaderboardData { StudentData = result, LoggedIn = true, Success = true };
-            }
-            else
-            {
-                return new LeaderboardData { StudentData = null, LoggedIn = false, Success = false };
-            }
-
-        }
-        catch (Exception ex)
-        {
-            return new LeaderboardData() { StudentData = null, LoggedIn = false, Success = false, Error = ex.Message };
         }
     }
 

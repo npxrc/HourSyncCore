@@ -9,7 +9,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>hoursynccore</PackageId>
     <Title>HourSyncCore</Title>
-    <Version>1.2.0</Version>
+    <Version>1.3.1</Version>
     <Authors>Neil Patrao, npxrc</Authors>
     <Company>HourSync</Company>
     <Description>An easy way to interact with the Academy Endorsement portal.
@@ -28,6 +28,10 @@ Not affiliated with or endorsed by the Olathe School District</Description>
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="HourSyncLicenceAgreement.rtf">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

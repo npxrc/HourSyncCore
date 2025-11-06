@@ -1,6 +1,6 @@
 # HourSyncCore
 
-_This project is licensed under the Apache License 2.0. All code, including previous commits, is now licensed under the terms of the Apache License, Version 2.0._
+_**This project is licensed under the HourSync Licence v1.0.0.** All code, including previous commits, is now licensed under the terms of the **HourSync Licence v1.0.0.** Please be sure to read it and understand what you're agreeing to._
 
 ---
 

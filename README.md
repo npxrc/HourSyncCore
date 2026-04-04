@@ -1,6 +1,6 @@
 # HourSyncCore
 
-_**This project is licensed under the HourSync Licence v1.0.0.** All code, including previous commits, is now licensed under the terms of the **HourSync Licence v1.0.0.** Please be sure to read it and understand what you're agreeing to._
+_**This project is licensed under the HourSync Licence v1.0.0.** All code, including previous commits, is now licensed under the terms of the **HourSync Licence v1.0.0.** [(HourSync Website)](https://hoursync.net/legal/hoursync) [(GitHub link)](https://raw.githubusercontent.com/npxrc/HourSyncCore/refs/heads/master/LICENSE.txt) Please be sure to read it and understand what you're agreeing to._
 
 ---
 
@@ -320,4 +320,10 @@ Eventually, there will be a complete app that you can copy and paste, that has t
 
 # License
 
-HourSyncCore is licensed under the same license as HourSync, which is the Apache 2.0 license.
+HourSyncCore is licensed under the same license as HourSync, which is <u>**now the HourSync Licence v1.0.0**</u>.
+
+Please read the terms of the License and ensure that you understand what you're agreeing to. The License is in place to protect me, you, and the Olathe School District.
+
+You can find the License at:
+- The official HourSync website at [https://hoursync.net/legal/hoursync](https://raw.githubusercontent.com/npxrc/HourSyncCore/refs/heads/master/LICENSE.txt)
+- The GitHub repository of [HourSyncCore](https://github.com/npxrc/HourSyncCore/blob/master/LICENSE.txt) under LICENSE.txt

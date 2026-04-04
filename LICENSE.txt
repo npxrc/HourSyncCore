@@ -1,4 +1,4 @@
-HourSync Licence v1.0.0 Terms
+HourSync Licence Terms
 IMPORTANT! READ CAREFULLY:
 THIS IS A LEGAL AGREEMENT. BY DOWNLOADING OR USING THE SOFTWARE, THE CUSTOMER AGREES TO THIS LICENCE OR THE MOST RECENT VERSION OF THE LICENCE, AND CONSENTS TO BE BOUND BY THE TERMS SET BELOW. IF YOU DO NOT UNDERSTAND THE TERMS BELOW, DO NOT USE THE SOFTWARE. IF YOU DO NOT AGREE TO THE TERMS BELOW, YOU ARE NOT PERMITTED TO USE THE SOFTWARE.
 
@@ -9,12 +9,13 @@ The terms of this Licence apply to:
 - any release of HourSync for Web software, past or current, and
 - any release of HourSyncCore software, past or current
 
-In the simplest language, this licence:
+In the simplest language, this Licence:
 - allows You to learn from and use the Software, including its source code, if you attribute credit to HourSync and Neil Patrao
 - restricts use of the Software to students in the Olathe Public School District, USD 233.
 - restricts the resale of HourSync and HourSyncCore software
 - limits liability of the Developer, Neil Patrao, for misuse of the Software
 - allows the Developer, Neil Patrao, to update these terms at any time
+
 1 - Parties:
 1.1: "Customer" or "You" refers to a student within a High School in the Olathe School District, who is also enrolled in a 21st Century Academy, OR an Instructor of a 21st Century Academy (see 2.3 and 2.4)
 1.2: The terms "the Developer", "npxrc", and "Neil Patrao" refer collectively to Neil Patrao, the individual who created and maintains the Software.
@@ -33,15 +34,14 @@ In the simplest language, this licence:
 2.7: "Licence" refers to... this! The thing you"re reading, "The HourSync and Related Software Licence Agreement."
 
 3 - Licence Grant:
-Subject to the terms and conditions of this Agreement, the Developer, Neil Patrao, grants You a non-exclusive, revocable (upon breach), non-transferrable, and non-sublicensable licence to do the following, solely for use within the Olathe School District and/or in connection with the operations of a 21st Century Academy (or as otherwise expressly permitted):
+Subject to the terms and conditions of this Agreement, the Developer, Neil Patrao, grants You a non-exclusive, revocable (upon breach), non-transferrable, and non-sublicensable Licence to do the following, solely for use within the Olathe School District and/or in connection with the operations of a 21st Century Academy (or as otherwise expressly permitted):
 (A) You May:
 i. Run, execute, and interact with the Software in object or executable form,
 ii. Install the Software on devices, excluding Virtual Machine devices.
 iii. Learn from and use the source code, provided you follow the terms set forth in Section 4
 (B) You may not:
-i. Sell, monetise, or sublicense the Software
+i. Sell, monetise, or subLicence the Software
 ii. Create forks of the Software in a way which makes it seem as if HourSync, or the Developer endorse it or created it (see 4.2)
-iii. Use the Software in a way which attempts to reverse engineer or interfere with anyone else"s use of any HourSync platform (including the Software) or backend service, or the 21st Century Academy"s official portal
 
 4 - Restrictions:
 4.1: Sale: The Software covered by this Licence may not be sold or resold at any time, including:
@@ -49,6 +49,7 @@ iii. Use the Software in a way which attempts to reverse engineer or interfere w
 4.1.2: forks of forks, and
 4.1.3: other programs which rely on the Software"s features
 4.2: Forks and other programs which rely on or use the Software"s features must provide credit to HourSync and Neil Patrao. Learn more in the Brand Usage agreement at https://hoursync.net/legal/brand-usage
+4.3: Use the Software in a way which attempts to reverse engineer or interfere with anyone else's use of any HourSync platform (including the Software) or backend service, or the 21st Century Academy"s official portal
 
 5 - Limitation of Liability and Warranty:
 5.1: THE SOFTWARE GOVERNED BY THIS LICENCE IS PROVIDED ON AN "AS IS" BASIS AND "AS AVAILABLE" BASIS. THE USAGE OF THE SOFTWARE IS AT THE CUSTOMER"S OWN RISK. THE SOFTWARE PROVIDES THE ABILITY TO INTERFACE WITH AN ENDPOINT. THE CUSTOMER IS RESPONSIBLE FOR DETERMINING IF THE ENDPOINT OR THE SOFTWARE IS SECURE, AND THE CUSTOMER, NOT THE DEVELOPER, SHALL BE HELD LIABLE FOR ANY MISUSE OF THE SOFTWARE.

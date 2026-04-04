@@ -3,7 +3,7 @@
 // HourSyncCore.cs
 //
 // Push command since I forget every time:
-// nuget push bin\publish\hoursynccore.<version>.nupkg -s https://api.nuget.org/v3/index.json
+// nuget push bin\publish\hoursynccore.<version>.nupkg -source https://api.nuget.org/v3/index.json
 
 using System.Net;
 using System.Text;
@@ -239,6 +239,14 @@ public record FetchedEHourRequest
     /// True if the client is still logged in. Useful for checking why Success is false.
     /// </summary>
     public required bool LoggedIn
+    {
+        get; init;
+    }
+
+    /// <summary>
+    /// Gets the HTML markup content associated with this instance.
+    /// </summary>
+    public required string Html
     {
         get; init;
     }
@@ -697,7 +705,7 @@ public static partial class HourSyncCore
 
         if (!responseString.Contains("Requested Number of Hours"))
         {
-            return new FetchedEHourRequest() { Body = null, Date = DateTime.Now, LoggedIn = false, RequestedHours = null, Value = null, Success = false, Error = "Not logged in." };
+            return new FetchedEHourRequest() { Body = null, Date = DateTime.Now, LoggedIn = false, RequestedHours = null, Value = null, Success = false, Error = "Not logged in.", Html = responseString };
         }
 
         HtmlAgilityPack.HtmlDocument doc = new();
@@ -742,6 +750,7 @@ public static partial class HourSyncCore
                 Date = dateSubtd,
                 Success = true,
                 LoggedIn = true,
+                Html = responseString
             };
         }
         else
@@ -751,7 +760,7 @@ public static partial class HourSyncCore
     }
 
     /// <summary>
-    /// Edits an existing EHour Request. Must be a pending request.
+    /// Edits an existing eHour Request. Must be a pending request.
     /// </summary>
     /// <param name="phpSessionId">Your session ID.</param>
     /// <param name="request">The request to update.</param>
@@ -789,6 +798,22 @@ public static partial class HourSyncCore
         {
             return new PostResponse() { LoggedIn = false, Success = false, Error = e.Message };
         }
+    }
+
+    /// <summary>
+    /// Deletes a pending eHour Request. Must be a pending request.
+    /// </summary>
+    /// <param name="phpSessionId">Your session ID.</param>
+    /// <param name="request">The request to update.</param>
+    /// <returns>A <see cref="PostResponse"/> which has Success, Error, and LoggedIn properties.</returns>
+    public static async Task<PostResponse> DeleteRequest(string phpSessionId, UpdatedRequest request)
+    {
+        if (request.State != Status.Pending)
+        {
+            throw new InvalidOperationException("The request must be pending for you to delete it.");
+        }
+
+        return new PostResponse() { LoggedIn = false, Success = false, Error = "Deleting requests is not supported at this time." };
     }
 
     /// <summary>

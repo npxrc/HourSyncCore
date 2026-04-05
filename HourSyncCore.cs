@@ -114,9 +114,17 @@ public record EHourRequest
     }
 
     /// <summary>
-    /// The date and time the request was submitted.
+    /// The date and time the request was submitted. This is the time the website gives, not an absolute date.
     /// </summary>
     public required string Date
+    {
+        get; init;
+    }
+
+    /// <summary>
+    /// A way to sort requests by time.
+    /// </summary>
+    public required DateTime DateTime
     {
         get; init;
     }
@@ -640,6 +648,7 @@ public static partial class HourSyncCore
                                     Description = description,
                                     Hours = hours,
                                     Date = date,
+                                    DateTime = DateTime.Parse(date),
                                     State = state
                                 };
 

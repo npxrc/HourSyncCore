@@ -9,7 +9,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>hoursynccore</PackageId>
     <Title>HourSyncCore</Title>
-    <Version>1.3.2</Version>
+    <Version>1.3.3</Version>
     <Authors>Neil Patrao, npxrc</Authors>
     <Company>HourSync</Company>
     <Description>An easy way to interact with the Academy Endorsement portal.
